@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\OrganismeController;
+use App\Http\Controllers\ProjectController;
+use App\Models\Organisme;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Home');
-});
+
+
+
+
+
+
+Route::get('/' , [OrganismeController::class , 'show']);
+Route::get('addorg' , [OrganismeController::class , 'create']);
+Route::post('addorganisme' , [OrganismeController::class , 'store'])->name('organisme.store');
+Route::get('organisme/{id}/edit',[OrganismeController::class,'edit'])->name('organisme.edit');
+Route::put('organisme/update/{id}' , [OrganismeController::class , 'update'])->name('organisme.update');
+Route::get('/projects' , [ProjectController::class , 'show']);
+Route::get('addprjt' , [ProjectController::class , 'create']);
+Route::post('addprojects' , [ProjectController::class , 'store'])->name('project.store');
+Route::get('project/{id}/edit' , [ProjectController::class , 'edit'])->name('project.edit');
+Route::put('project/{id}/update'  , [ProjectController::class , 'update'])->name('project.update');
+
+
+
+
+
